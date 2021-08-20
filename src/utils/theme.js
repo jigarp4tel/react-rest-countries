@@ -4,7 +4,6 @@ function setTheme(themeName) {
 }
 
 function keepTheme() {
-    console.log('keep theme')
     if (localStorage.getItem('theme')) {
         if (localStorage.getItem('theme') === 'dark') {
             setTheme('dark');

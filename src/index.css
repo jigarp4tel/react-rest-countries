@@ -15,8 +15,9 @@ Dark
 .light {
   --bg-color: hsl(0, 0%, 98%);
   --text-color: hsl(200, 15%, 8%);
-
   --elements-color: hsl(0, 0%, 100%);
+
+  --input-color: hsl(0, 0%, 52%);
 }
 
 .dark {
@@ -24,6 +25,7 @@ Dark
   --text-color: hsl(0, 0%, 100%);
 
   --elements-color: hsl(209, 23%, 22%);
+  --input-color: rgb(133, 133, 133);
 }
 
 * {
@@ -53,10 +55,10 @@ header {
 }
 
 nav {
-  width: 1080px;
+  width: 1280px;
   max-width: 100%;
   margin: 0 auto;
-  padding: 20px 0;
+  padding: 30px;
 
   display: flex;
   align-items: center;
@@ -74,4 +76,113 @@ nav {
 
 .theme-switcher img {
   width: 16px;
+}
+
+/* Country List */
+
+.country-list-grid {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+/* Country Cards */
+.country-card {
+  background-color: var(--elements-color);
+  border-radius: 5px;
+  overflow: hidden;
+
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.country-card-flag {
+  height: 187px;
+  overflow: hidden;
+}
+
+.country-card-flag img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.country-card-info {
+  padding: 20px;
+}
+
+.country-card-info-title {
+  margin-bottom: 20px;
+}
+.country-card-info-stats {
+  padding-bottom: 10px;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+/* Search & Filter Bar */
+.searchbar {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.searchbox {
+  background-color: var(--elements-color);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.searchbox input,
+select {
+  border: 0;
+  outline: none;
+
+  height: 3rem;
+
+  font-size: 14px;
+  color: var(--text-color);
+  background-color: var(--elements-color);
+}
+
+.searchbox input {
+  width: 20rem;
+  text-indent: 10px;
+}
+
+.select-wrapper {
+  background-color: var(--elements-color);
+  padding: 0 10px;
+}
+
+select {
+  padding: 0 10px;
+}
+
+.searchbox input::placeholder {
+  font-size: 12px;
+  color: var(--input-color);
+}
+
+.searchBtn {
+  height: 18px;
+  color: var(--input-color);
 }

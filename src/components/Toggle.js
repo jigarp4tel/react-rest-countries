@@ -11,7 +11,7 @@ const Toggle = () => {
     );
 
     const themeSwitchHandler = () => {
-        console.log('trigger')
+
         if (localStorage.getItem('theme') === 'dark') {
             setCurrentTheme('light');
             setTheme('light')
