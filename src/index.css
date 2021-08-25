@@ -87,7 +87,9 @@ nav {
   padding: 30px;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 281px));
+  justify-content: center;
+
   gap: 2rem;
 }
 
@@ -141,6 +143,7 @@ form {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .searchbox {
@@ -149,6 +152,8 @@ form {
   display: flex;
   align-items: center;
   padding: 0 20px;
+  width: 25rem;
+  max-width: 100%;
 }
 
 .searchbox input,
@@ -164,17 +169,19 @@ select {
 }
 
 .searchbox input {
-  width: 20rem;
   text-indent: 10px;
+  width: 100%;
 }
 
 .select-wrapper {
   background-color: var(--elements-color);
   padding: 0 10px;
+  border-radius: 5px;
 }
 
 select {
   padding: 0 10px;
+  font-family: "Nunito Sans", sans-serif;
 }
 
 .searchbox input::placeholder {

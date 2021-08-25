@@ -1,26 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import CountryCard from './CountryCard';
 
-const CountryList = () => {
-
-    const [countryList, setCountryList] = useState([])
-
-    useEffect(() => {
-        getAllCountries();
-    })
+const CountryList = ({ countryList }) => {
 
 
-    const getAllCountries = () => {
-        fetch('https://restcountries.eu/rest/v2/all')
-            .then(res => res.json())
-            .then(data => setCountryList(data))
-    }
-
-    const getCountry = (country) => {
-        fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-            .then(res => res.json())
-            .then(data => setCountryList(data))
-    }
 
     return (
         <div className="country-list-grid">
