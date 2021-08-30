@@ -1,9 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import searchBtn from '../assets/search.svg'
 
 const SearchBar = ({ handleSearch, handleFilter }) => {
 
     const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+
+    const [isListOpen, setIsListOpen] = useState(false);
+    const [regionValue, setRegionValue] = useState('Filter by Region')
 
     const handleChange = (e) => {
 
@@ -11,27 +14,36 @@ const SearchBar = ({ handleSearch, handleFilter }) => {
         handleSearch(value)
     }
 
-    const handleFilterChange = (e) => {
-        const { value } = e.target
-        handleFilter(value)
+
+    const toggleDropdown = () => {
+        setIsListOpen(!isListOpen)
+    }
+
+    const handleRegionChange = (region) => {
+        setRegionValue(region)
+        toggleDropdown()
+        handleFilter(region)
     }
 
     return (
         <div className="searchbar">
-            <form>
+            <div className="form" >
                 <div className="searchbox">
                     <img className="searchBtn" src={searchBtn} alt="" />
                     <input type="text" placeholder="Search for a country..." onChange={handleChange} />
                 </div>
-                <div className="select-wrapper">
-                    <select defaultValue={'DEFAULT'} onChange={handleFilterChange}>
-                        <option value="DEFAULT" disabled >Filter by region</option>
-                        {regions.map(region => (
-                            <option key={region} value={region} >{region}</option>
-                        ))}
-                    </select>
+                <div className="dropdown">
+                    <div className="dropdown-title" onClick={toggleDropdown}>{regionValue}</div>
+                    {isListOpen &&
+                        <ul>
+                            {
+                                regions.map(region => (
+                                    <li key={region} onClick={() => handleRegionChange(region)}>{region}</li>
+                                ))
+                            }
+                        </ul>}
                 </div>
-            </form>
+            </div>
         </div>
     )
 }
