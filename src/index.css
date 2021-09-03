@@ -74,10 +74,6 @@ nav {
   gap: 8px;
 }
 
-.theme-switcher img {
-  width: 16px;
-}
-
 /* Country List */
 
 .country-list-grid {
@@ -199,6 +195,7 @@ nav {
   height: 3rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
 }
 
@@ -223,6 +220,11 @@ nav {
 
 .dropdown ul li:hover {
   background-color: var(--bg-color);
+}
+
+.arrow {
+  height: 15px;
+  margin-left: 20px;
 }
 
 /* Country Details */

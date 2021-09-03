@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { setTheme } from '../utils/theme';
-import moonlight from '../assets/moon-light.svg';
-import moondark from '../assets/moon-dark.svg';
+
+import { IoMoonOutline, IoMoonSharp } from "react-icons/io5";
 
 const Toggle = () => {
 
@@ -24,7 +24,7 @@ const Toggle = () => {
 
     return (
         <div className="theme-switcher" onClick={() => themeSwitchHandler()}>
-            <img src={(currentTheme === 'light') ? moonlight : moondark} alt="" />
+            {(currentTheme === 'light') ? <IoMoonOutline /> : <IoMoonSharp />}
             <div>Dark Mode</div>
         </div>
     )

@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import searchBtn from '../assets/search.svg'
+
+import { IoSearch, IoChevronDown, IoChevronUp } from "react-icons/io5";
 
 const SearchBar = ({ handleSearch, handleFilter }) => {
 
@@ -29,11 +30,16 @@ const SearchBar = ({ handleSearch, handleFilter }) => {
         <div className="searchbar">
             <div className="form" >
                 <div className="searchbox">
-                    <img className="searchBtn" src={searchBtn} alt="" />
+                    <IoSearch />
                     <input type="text" placeholder="Search for a country..." onChange={handleChange} />
                 </div>
                 <div className="dropdown">
-                    <div className="dropdown-title" onClick={toggleDropdown}>{regionValue}</div>
+                    <div className="dropdown-title" onClick={toggleDropdown}>
+                        {regionValue}
+                        {
+                            isListOpen ? <IoChevronUp /> : <IoChevronDown />
+                        }
+                    </div>
                     {isListOpen &&
                         <ul>
                             {
