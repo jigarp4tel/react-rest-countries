@@ -1,5 +1,6 @@
 import React from 'react'
 import Toggle from './Toggle'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
 
@@ -7,7 +8,7 @@ const Header = () => {
     return (
         <header>
             <nav>
-                <h1>Where in the world?</h1>
+                <Link to="/" className="logo">Where in the world?</Link>
                 <Toggle />
             </nav>
         </header>

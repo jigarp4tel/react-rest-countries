@@ -44,9 +44,10 @@ body {
   color: var(--text-color);
 }
 
-h1 {
+.logo {
   font-size: 1.5rem;
   color: var(--text-color);
+  font-weight: 800;
 }
 
 header {
@@ -64,6 +65,10 @@ nav {
   align-items: center;
   justify-content: space-between;
   color: var(--text-color);
+}
+
+a {
+  text-decoration: none;
 }
 
 .theme-switcher {
@@ -114,13 +119,14 @@ nav {
 
 .country-card-info {
   padding: 20px;
+  color: var(--text-color);
 }
 
 .country-card-info-title {
   margin-bottom: 20px;
 }
 .country-card-info-stats {
-  padding-bottom: 10px;
+  padding-bottom: 8px;
 }
 
 .bold {
@@ -229,6 +235,66 @@ nav {
 
 /* Country Details */
 
-.details-container {
+.country-details-container {
+  width: 1280px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.country-details-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  column-gap: 8rem;
+}
+
+.flag-wrapper img {
+  max-width: 100%;
+  width: 500px;
+}
+
+.country-details {
+  padding: 50px 0;
+  flex: 1;
+}
+
+.country-details-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+
+  padding: 50px 0;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  max-width: 120px;
+  padding: 6px 20px;
+  margin-bottom: 50px;
+
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+}
+
+.border-btn {
+  display: inline-block;
+  padding: 2px 15px;
+
+  margin-left: 8px;
+  margin-bottom: 8px;
+}
+
+.btn {
+  border-radius: 4px;
+  color: var(--text-color);
+  background-color: var(--elements-color);
+}
+
+.border-countries {
+  display: flex;
+  flex-wrap: wrap;
 }
