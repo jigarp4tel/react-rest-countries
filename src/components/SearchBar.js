@@ -1,16 +1,33 @@
-import React, { useState } from 'react'
-
+import React, { useState, useRef, useEffect } from 'react'
 import { IoSearch, IoChevronDown, IoChevronUp } from "react-icons/io5";
+
 
 const SearchBar = ({ handleSearch, handleFilter }) => {
 
-    const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
+    const regions = ['All', 'Africa', 'Americas', 'Asia', 'Europe', 'Oceania'];
 
     const [isListOpen, setIsListOpen] = useState(false);
     const [regionValue, setRegionValue] = useState('Filter by Region')
 
-    const handleChange = (e) => {
+    const ref = useRef();
 
+    useEffect(() => {
+
+        const closeDropdown = e => {
+            if (isListOpen && ref.current && !ref.current.contains(e.target)) {
+                setIsListOpen(false)
+            }
+        }
+        document.addEventListener('mousedown', closeDropdown)
+
+        return () => {
+            document.removeEventListener('mousedown', closeDropdown)
+        }
+
+    }, [isListOpen])
+
+
+    const handleChange = (e) => {
         const { value } = e.target
         handleSearch(value)
     }
@@ -33,7 +50,7 @@ const SearchBar = ({ handleSearch, handleFilter }) => {
                     <IoSearch />
                     <input type="text" placeholder="Search for a country..." onChange={handleChange} />
                 </div>
-                <div className="dropdown">
+                <div className="dropdown" ref={ref}>
                     <div className="dropdown-title" onClick={toggleDropdown}>
                         {regionValue}
                         {

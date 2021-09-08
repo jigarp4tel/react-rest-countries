@@ -11,26 +11,28 @@ const CountryDetails = () => {
     const [borderCountries, setBorderCountries] = useState([]);
 
     useEffect(() => {
+
+        const getCountry = async () => {
+            let response = await fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`)
+            let data = await response.json()
+
+            setCountry(data)
+            data[0].borders.map(border => (
+                getBorderCountries(border)
+            ))
+        }
+
         setBorderCountries([])
         getCountry();
 
     }, [name])
 
-    const getCountry = () => {
-        fetch(`https://restcountries.eu/rest/v2/name/${name}?fullText=true`)
-            .then(res => res.json())
-            .then(data => {
-                setCountry(data)
-                data[0].borders.map(border => (
-                    getBorderCountries(border)
-                ))
-            })
-    }
 
-    const getBorderCountries = (code) => {
-        fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
-            .then(res => res.json())
-            .then(data => setBorderCountries(borderCountry => [...borderCountry, data.name]))
+
+    const getBorderCountries = async (code) => {
+        let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
+        let data = await response.json()
+        setBorderCountries(borderCountry => [...borderCountry, data.name])
     }
 
 

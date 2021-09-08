@@ -19,22 +19,28 @@ function App() {
   }, [])
 
 
-  const getAllCountries = () => {
-    fetch('https://restcountries.eu/rest/v2/all')
-      .then(res => res.json())
-      .then(data => setCountryList(data))
+  const getAllCountries = async () => {
+    let response = await fetch('https://restcountries.eu/rest/v2/all')
+    let data = await response.json()
+    setCountryList(data)
   }
 
-  const searchCountry = (country) => {
-    fetch(`https://restcountries.eu/rest/v2/name/${country}`)
-      .then(res => res.json())
-      .then(data => setCountryList(data))
+  const searchCountry = async (country) => {
+    let response = await fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    let data = await response.json()
+    setCountryList(data)
   }
 
-  const filterByRegion = (region) => {
-    fetch(`https://restcountries.eu/rest/v2/region/${region}`)
-      .then(res => res.json())
-      .then(data => setCountryList(data))
+  const filterByRegion = async (region) => {
+
+
+    if (region === 'All') {
+      getAllCountries();
+    } else {
+      let response = await fetch(`https://restcountries.eu/rest/v2/region/${region}`)
+      let data = await response.json()
+      setCountryList(data)
+    }
   }
 
   const handleSearch = (country) => {
