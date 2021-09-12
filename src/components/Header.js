@@ -7,10 +7,10 @@ const Header = () => {
 
     return (
         <header>
-            <nav>
-                <Link to="/" className="logo">Where in the world?</Link>
+            <div className="nav">
+                <h1><Link to="/" className="logo">Where in the world?</Link></h1>
                 <Toggle />
-            </nav>
+            </div>
         </header>
     )
 }

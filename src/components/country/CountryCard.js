@@ -2,10 +2,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const CountryCard = ({ country }) => {
-    const { flag, name, population, region, capital } = country
+    const { flag, name, population, region, capital, alpha3Code } = country
 
     return (
-        <Link to={`/country/${name}`}>
+        <Link to={`/country/${alpha3Code}`}>
             <div className="country-card">
                 <div className="country-card-flag">
                     <img src={flag} alt="flag" />

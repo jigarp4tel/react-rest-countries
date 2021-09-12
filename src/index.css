@@ -55,7 +55,7 @@ header {
   box-shadow: 0 10px 15px -15px rgb(0 0 0 / 20%);
 }
 
-nav {
+.nav {
   width: 1280px;
   max-width: 100%;
   margin: 0 auto;

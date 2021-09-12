@@ -44,8 +44,8 @@ const SearchBar = ({ handleSearch, handleFilter }) => {
     }
 
     return (
-        <div className="searchbar">
-            <div className="form" >
+        <nav className="searchbar">
+            <form className="form" >
                 <div className="searchbox">
                     <IoSearch />
                     <input type="text" placeholder="Search for a country..." onChange={handleChange} />
@@ -66,8 +66,8 @@ const SearchBar = ({ handleSearch, handleFilter }) => {
                             }
                         </ul>}
                 </div>
-            </div>
-        </div>
+            </form>
+        </nav>
     )
 }
 

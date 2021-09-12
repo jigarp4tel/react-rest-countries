@@ -6,11 +6,11 @@ const CountryList = ({ countryList }) => {
 
 
     return (
-        <div className="country-list-grid">
+        <main className="country-list-grid">
             {countryList.map(country => (
                 <CountryCard key={country.name} country={country} />
             ))}
-        </div>
+        </main>
     )
 }
 
