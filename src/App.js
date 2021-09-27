@@ -5,6 +5,7 @@ import SearchBar from "./components/SearchBar";
 import { keepTheme } from "./utils/theme";
 import { Route, Switch } from 'react-router-dom';
 import CountryDetails from "./components/country/CountryDetails";
+import { BASE_API } from './config.js';
 
 function App() {
 
@@ -20,13 +21,13 @@ function App() {
 
 
   const getAllCountries = async () => {
-    let response = await fetch('https://restcountries.eu/rest/v2/all')
-    let data = await response.json()
+    let response = await fetch(`${BASE_API}/all`)
+    let data = await response.json();
     setCountryList(data)
   }
 
   const searchCountry = async (country) => {
-    let response = await fetch(`https://restcountries.eu/rest/v2/name/${country}`)
+    let response = await fetch(`${BASE_API}/name/${country}`)
     let data = await response.json()
     setCountryList(data)
   }
@@ -37,7 +38,7 @@ function App() {
     if (region === 'All') {
       getAllCountries();
     } else {
-      let response = await fetch(`https://restcountries.eu/rest/v2/region/${region}`)
+      let response = await fetch(`${BASE_API}/region/${region}`)
       let data = await response.json()
       setCountryList(data)
     }

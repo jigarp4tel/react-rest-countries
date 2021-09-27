@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom';
 import { IoArrowBack } from "react-icons/io5";
+import { BASE_API } from '../../config';
 
 const CountryDetails = () => {
 
@@ -13,7 +14,7 @@ const CountryDetails = () => {
     useEffect(() => {
 
         const getCountry = async () => {
-            let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${name}`)
+            let response = await fetch(`${BASE_API}/alpha/${name}`)
             let data = await response.json()
             setCountry(data)
             data.borders.map(border => (
@@ -29,7 +30,7 @@ const CountryDetails = () => {
 
 
     const getBorderCountries = async (code) => {
-        let response = await fetch(`https://restcountries.eu/rest/v2/alpha/${code}`)
+        let response = await fetch(`${BASE_API}/alpha/${code}`)
         let data = await response.json()
         setBorderCountries(borderCountry => [...borderCountry, data])
     }
@@ -47,7 +48,7 @@ const CountryDetails = () => {
 
                 <div className="country-details-wrapper">
                     <div className="flag-wrapper">
-                        <img src={country.flag} alt="" />
+                        <img src={country.flags[0]} alt="" />
                     </div>
                     <div className="country-details">
                         <h2>{country.name}</h2>
@@ -62,7 +63,11 @@ const CountryDetails = () => {
                             </div>
                             <div>
                                 <div className="country-card-info-stats"><span className="bold">Top Level Domain: </span><span>{country.topLevelDomain}</span></div>
-                                <div className="country-card-info-stats"><span className="bold">Currencies: </span><span>{country.currencies.name}</span>
+                                <div className="country-card-info-stats"><span className="bold">Currencies: </span>{
+                                    country.currencies.map((currency, id) => (
+                                        <span key={currency.name}>{(id ? ', ' : '') + currency.name}</span>
+                                    ))
+                                }
                                 </div>
                                 <div className="country-card-info-stats"><span className="bold">Languages: </span>
                                     {
