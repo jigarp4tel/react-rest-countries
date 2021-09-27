@@ -38,7 +38,7 @@ function App() {
     if (region === 'All') {
       getAllCountries();
     } else {
-      let response = await fetch(`${BASE_API}/region/${region}`)
+      let response = await fetch(`${BASE_API}/continent/${region}`)
       let data = await response.json()
       setCountryList(data)
     }
