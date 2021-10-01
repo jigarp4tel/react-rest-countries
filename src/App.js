@@ -23,6 +23,7 @@ function App() {
   const getAllCountries = async () => {
     let response = await fetch(`${BASE_API}/all`)
     let data = await response.json();
+    console.log(data)
     setCountryList(data)
   }
 

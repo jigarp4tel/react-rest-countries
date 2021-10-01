@@ -17,7 +17,8 @@ const CountryDetails = () => {
             let response = await fetch(`${BASE_API}/alpha/${name}`)
             let data = await response.json()
             setCountry(data)
-            data.borders.map(border => (
+
+            data.borders && data.borders.map(border => (
                 getBorderCountries(border)
             ))
         }
@@ -44,14 +45,15 @@ const CountryDetails = () => {
         <main className="country-details-container">
             <Link to="/" className="back-btn btn"><IoArrowBack /><span>Back</span></Link>
 
-            {country &&
+            {
+                country &&
 
                 <div className="country-details-wrapper">
                     <div className="flag-wrapper">
-                        <img src={country.flags[0]} alt="" />
+                        <img src={country.flags.svg} alt="" />
                     </div>
                     <div className="country-details">
-                        <h2>{country.name}</h2>
+                        <h2>{country.name.official}</h2>
 
                         <div className="country-details-info">
                             <div>
@@ -64,7 +66,7 @@ const CountryDetails = () => {
                             <div>
                                 <div className="country-card-info-stats"><span className="bold">Top Level Domain: </span><span>{country.topLevelDomain}</span></div>
                                 <div className="country-card-info-stats"><span className="bold">Currencies: </span>{
-                                    country.currencies.map((currency, id) => (
+                                    country.currencies && country.currencies.map((currency, id) => (
                                         <span key={currency.name}>{(id ? ', ' : '') + currency.name}</span>
                                     ))
                                 }
